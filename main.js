@@ -1,13 +1,13 @@
-const API_URL_RANDOM= "https://api.thecatapi.com/v1/images/search?limit=2&api_key=live_8Cfw3o6HHx45AFiKyhvdxdckIKBCd77iUJlqFOBh4m3tPcuMyzE4QAzvua2r44yA"
+const API_URL_RANDOM= "https://api.thecatapi.com/v1/images/search?limit=2"
 
-const API_URL_FAVOURITES= "https://api.thecatapi.com/v1/favourites?api_key=live_8Cfw3o6HHx45AFiKyhvdxdckIKBCd77iUJlqFOBh4m3tPcuMyzE4QAzvua2r44yA"
+const API_URL_FAVOURITES= "https://api.thecatapi.com/v1/favourites"
 
-const API_URL_FAVOURITES_DELETE = (id)=>`https://api.thecatapi.com/v1/favourites/${id}?api_key=live_8Cfw3o6HHx45AFiKyhvdxdckIKBCd77iUJlqFOBh4m3tPcuMyzE4QAzvua2r44yA`
+const API_URL_FAVOURITES_DELETE = (id)=>`https://api.thecatapi.com/v1/favourites/${id}`
 
+
+const API_URL_UPLOAD= "https://api.thecatapi.com/v1/images/upload"
 
 const spanError = document.getElementById('error');
-
-
 
 const button = document.getElementById("aleatbutton")
 button.addEventListener("click", loadRandomMichis)
@@ -40,7 +40,12 @@ async function loadRandomMichis() {
 
 async function loadFavoritesMichis() {
 
-    const res = await fetch(API_URL_FAVOURITES);
+    const res = await fetch(API_URL_FAVOURITES, {
+        method: 'GET',
+        headers: {
+            'X-API-KEY':"live_8Cfw3o6HHx45AFiKyhvdxdckIKBCd77iUJlqFOBh4m3tPcuMyzE4QAzvua2r44yA"
+        }
+    });
     console.log("Favoritos")
     const data = await res.json();
 
@@ -87,7 +92,8 @@ async function saveFavoriteMichi(id){
     const res = await fetch(API_URL_FAVOURITES,{
         method: "POST",
         headers: {
-            'Content-Type':'application/json'
+            'Content-Type':'application/json',
+            'X-API-KEY':"live_8Cfw3o6HHx45AFiKyhvdxdckIKBCd77iUJlqFOBh4m3tPcuMyzE4QAzvua2r44yA"
         },
         body: JSON.stringify({
             image_id:id
@@ -110,6 +116,9 @@ async function saveFavoriteMichi(id){
 async function deleteFavoriteMichi(id){
     const res = await fetch(API_URL_FAVOURITES_DELETE(id),{
         method: "DELETE",
+        headers: {
+            'X-API-KEY':"live_8Cfw3o6HHx45AFiKyhvdxdckIKBCd77iUJlqFOBh4m3tPcuMyzE4QAzvua2r44yA"
+        }
     });
 
     const data = await res.json()
@@ -120,6 +129,33 @@ async function deleteFavoriteMichi(id){
     else{
         console.log("Michi eliminado de favoritos")
         loadFavoritesMichis();
+    }
+}
+
+async function uploadMichiPhoto(){
+    const form = document.getElementById('uploadingForm');
+    const formData = new FormData(form);
+
+    console.log(formData.get("file"))
+
+    const res = await fetch(API_URL_UPLOAD,{
+        method: 'POST',
+        headers: {
+            //'Content-Type':'multipart/form-data',
+            'X-API-KEY':"live_8Cfw3o6HHx45AFiKyhvdxdckIKBCd77iUJlqFOBh4m3tPcuMyzE4QAzvua2r44yA"
+        },
+        body: formData,
+
+    })
+    const data = await res.json();
+    if (res.status !== 201) {
+        spanError.innerHTML = `Hubo un error al subir michi: ${res.status} ${data.message}`
+    }
+    else {
+        console.log("Foto de michi subida :)");
+        console.log({ data });
+        console.log(data.url);
+        saveFavoriteMichi(data.id) 
     }
 }
 
