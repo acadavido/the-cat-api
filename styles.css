@@ -1,10 +1,9 @@
 
-
-
 *{
     padding: 0px;
     margin: 0 px;
     box-sizing: border-box;
+    font-family: 'Oxygen', sans-serif;
 }
 
 body{
@@ -12,5 +11,79 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: aquamarine;
+    background-color: rgba(253, 225, 225, 0.877);
+    
+    
+}
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    font-size: 40px;
+    color: indianred;
+    font-weight: 700;
+    margin-right: 10px;
+}
+#icon{
+    color: indianred;
+    height: 50px;
+    width: 50px;
+    margin: 0px;
+
+}
+#randomMichis{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+
+}
+h2{
+    color: indianred;
+}
+#favoritesMichis{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#favoritesCats{
+    display: flex;
+    width: 80vw;
+    justify-content: space-around;
+    
+}
+img{
+    border-radius: 5px;
+    width: 180px;
+    height: 180px;
+    margin-bottom: 20px;
+}
+button{
+    background-color: rgb(255, 255, 255);
+    color: rgb(83, 83, 83);
+    border-radius: 5px;
+    padding: 4px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    border-color: rgb(83, 83, 83);
+}
+#favorite-icon{
+    height: 30px;
+    width: 30px;
+}
+button:hover{
+    background-color: rgb(190, 190, 190);
+}
+#newFile{
+    background-color: rgb(255, 255, 255);
+    color: indianred;
+    border-radius: 5px;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+#newCatTitle{
+    text-align: center;
 }

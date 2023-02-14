@@ -6,55 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gatitos aleatorios</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Michis App</h1>
+    <header>
+        <h1>The Cats App</h1>
+        <img id="icon" src="https://cdn-icons-png.flaticon.com/512/1893/1893495.png" alt="Cat icon">
+    </header>
+
 
     <span id="error"></span>
 
     <section id="randomMichis">
-        <h2>Michis Aleatorios</h2>
+        <h2>Random Cat</h2>
+
         <article>
-            <img id="img1" width="150" alt="Foto gatito aleatorio">
+            <img id="img1" width="150" alt="Foto gatito aleatorio"><br>
             <button id="btn1" >
                 Guardar michi en favoritos
+                <img id="favorite-icon" src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" alt="">
             </button> 
         </article>
 
-        <article>
-            <img id="img2" width="150" alt="Foto gatito aleatorio">
-            <button id="btn2" >
-                Guardar michi en favoritos
-            </button> 
-        </article>
 
 
          
         <button id="aleatbutton">Recargar</button>
     </section>
 
-    <section id="uploadingMichi">
-        <h2>Sube la foto de tu michi</h2>
-        <form id="uploadingForm">
-            <input id="file" type="file" name="file">
-            <button type="button" onclick="uploadMichiPhoto()">Subir foto de michi</button>
-        </form>
-    </section>
+
 
 
 
     <section id="favoritesMichis">
         <h2>Michis favoritos</h2>
-        <article>
-            <img id="img1" width="150" alt="Foto gatito aleatorio">
-            <button>Sacar al michi de favoritos</button> 
-        </article>
+        <div id="favoritesCats">
+            <!-- <article>
+                <img id="img1" width="150" alt="Foto gatito aleatorio"><br>
+                <button>Sacar al michi de favoritos</button> 
+            </article> -->
+        </div>
+
     </section>
 
+    <section id="uploadingMichi">
+        <h2 id="newCatTitle">Sube la foto de tu michi</h2>
+        <form id="uploadingForm">
+            <input id="newFile" id="file" type="file" name="file">
+            <button type="button" onclick="uploadMichiPhoto()">Subir foto de michi</button>
+        </form>
+    </section>
 
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./main.js"></script>
 </body>
+
 
 </html>
