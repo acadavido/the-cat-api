@@ -89,9 +89,10 @@ button{
     margin-bottom: 10px;
     font-weight: 700;
     border-color: rgb(83, 83, 83);
+    
 }
 
-#btn1{
+#btn1, #btn2{
     margin: 0;
     border-radius: 50%;
     height: 35px;
@@ -100,29 +101,30 @@ button{
     position: absolute;
     right: 0;
     bottom: 0;
+    
 }
 
-#btn2{
-    margin: 0;
-    border-radius: 50%;
-    height: 35px;
-    width: 35px;
-    background-color: white;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-}
 
 #favorite-icon{
-    height: 25px;
-    width: 25px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: auto;
+
 }
 #favorite-icon:hover{
     content: url('https://cdn-icons-png.flaticon.com/512/1076/1076984.png');
 }
 #favorite-icon-pink{
-    height: 25px;
-    width: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: auto;
 }
 #favorite-icon-pink:hover{
     content: url(https://cdn-icons-png.flaticon.com/512/1077/1077035.png);

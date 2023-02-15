@@ -68,11 +68,14 @@ async function loadFavoritesMichis() {
 
     else{
         console.log(data)
-        const section = document.getElementById("favoritesMichis")
-        const div = document.getElementById("favoritesCats")
-        section.innerHTML = ""
-  
+        const section = document.getElementById("favoritesMichis");
+        const div = document.getElementById("favoritesCats");
+        section.innerHTML=''
+        div.innerHTML = '';
+
+
         const h2 = document.createElement ("h2");
+       
         const h2Text = document.createTextNode("Favorite Cats");
         h2.appendChild(h2Text);
         section.appendChild(h2);
@@ -133,6 +136,7 @@ async function saveFavoriteMichi(id){
     else{
         console.log("Saved in favorites")
         loadFavoritesMichis();
+        
     }
 }
 
@@ -152,6 +156,7 @@ async function deleteFavoriteMichi(id){
     else{
         console.log("Cat deleted")
         loadFavoritesMichis();
+
     }
 }
 
