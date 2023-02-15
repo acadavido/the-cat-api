@@ -34,7 +34,9 @@ async function loadRandomMichis() {
         const btn1=document.getElementById("btn1")
 
     
-        img1.src = data[0].url
+        // img1.src = data[0].url
+        img1.style.backgroundImage = `url(${data[0].url})`
+
 
 
         btn1.onclick = () => saveFavoriteMichi(data[0].id)

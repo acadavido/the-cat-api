@@ -61,6 +61,15 @@ img{
     height: 180px;
     margin-bottom: 20px;
 }
+#img1{
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+    width: 180px;
+    height: 180px;
+    margin-bottom: 20px;
+    position: relative;
+}
 button{
     background-color: rgb(255, 255, 255);
     color: rgb(83, 83, 83);
@@ -70,12 +79,26 @@ button{
     font-weight: 700;
     border-color: rgb(83, 83, 83);
 }
+
+#btn1{
+    margin: 0;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    background-color: white;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+#btn1:hover{
+    background-color: rgba(253, 225, 225, 0.877);
+}
 #favorite-icon{
-    height: 30px;
-    width: 30px;
+    height: 25px;
+    width: 25px;
 }
 button:hover{
-    background-color: rgb(190, 190, 190);
+    background-color: rgba(224, 224, 224, 0.945);
 }
 #newFile{
     background-color: rgb(255, 255, 255);
