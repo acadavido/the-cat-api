@@ -27,15 +27,15 @@ async function loadRandomMichis() {
     
 
     if(res.status !== 200)  {
-        spanError.innerHTML="Hubo un error: "+ res.status
+        spanError.innerHTML="Error: "+ res.status
     } else {
-        const img1=document.getElementById("img1")
+        const divrandom=document.getElementById("divrandom")
 
         const btn1=document.getElementById("btn1")
 
     
         // img1.src = data[0].url
-        img1.style.backgroundImage = `url(${data[0].url})`
+        divrandom.style.backgroundImage = `url(${data[0].url})`
 
 
 
@@ -53,7 +53,7 @@ async function loadFavoritesMichis() {
             'X-API-KEY':"live_8Cfw3o6HHx45AFiKyhvdxdckIKBCd77iUJlqFOBh4m3tPcuMyzE4QAzvua2r44yA"
         }
     });
-    console.log("Favoritos")
+   
     const data = await res.json();
 
     if(res.status !== 200)  {
@@ -62,7 +62,7 @@ async function loadFavoritesMichis() {
         console.log(data)
         console.log("error")
 
-        spanError.innerHTML = "Hubo un error: " + res.status +" "+ data;
+        spanError.innerHTML = "Error: " + res.status +" "+ data;
         
     }
 
@@ -71,32 +71,38 @@ async function loadFavoritesMichis() {
         const section = document.getElementById("favoritesMichis")
         const div = document.getElementById("favoritesCats")
         section.innerHTML = ""
+  
         const h2 = document.createElement ("h2");
-        const h2Text = document.createTextNode("Michis favoritos");
+        const h2Text = document.createTextNode("Favorite Cats");
         h2.appendChild(h2Text);
         section.appendChild(h2);
 
         data.forEach(michi => {
 
             const article = document.createElement("article");
-            const br = document.createElement("br")
-            const img = document.createElement('img');
-            const btn = document.createElement('button');
-            const btnText = document.createTextNode("Sacar al michi de favoritos");
+            const divFav = document.createElement('div');
+            const btn2 = document.createElement('button');
+            const btnImage = document.createElement("img");
+            btnImage.setAttribute('id', 'favorite-icon-pink');
+            btnImage.src='https://cdn-icons-png.flaticon.com/512/1076/1076984.png';
 
-            img.src = michi.image.url;
-            img.width = 150;
-            btn.appendChild(btnText);
-            btn.onclick = () => deleteFavoriteMichi(michi.id)
+            // img.src = michi.image.url;
+            divFav.style.backgroundImage = `url(${michi.image.url})`
+            divFav.setAttribute('id', 'divFav')
+
+            btn2.setAttribute('id', 'btn2')
+            btn2.appendChild(btnImage);
+            btn2.onclick = () => deleteFavoriteMichi(michi.id)
             
-            article.appendChild(img);
-            article.appendChild(br);
-            article.appendChild(btn);
+            
+            divFav.appendChild(btn2);
+            article.appendChild(divFav);
             div.appendChild(article)
             section.appendChild(div)
                      
         });
     }
+
 }
 
 async function saveFavoriteMichi(id){
@@ -122,10 +128,10 @@ async function saveFavoriteMichi(id){
    
     console.log(data)
     if(status !== 200){
-        spanError.innerHTML = "Hubo un error: " + status +" "+ data;
+        spanError.innerHTML = "Error: " + status +" "+ data;
     }
     else{
-        console.log("Michi guardado en favoritos")
+        console.log("Saved in favorites")
         loadFavoritesMichis();
     }
 }
@@ -141,10 +147,10 @@ async function deleteFavoriteMichi(id){
     const data = await res.json()
 
     if(res.status !== 200){
-        spanError.innerHTML = "Hubo un error: " + res.status +" "+ data;
+        spanError.innerHTML = "Error: " + res.status +" "+ data;
     }
     else{
-        console.log("Michi eliminado de favoritos")
+        console.log("Cat deleted")
         loadFavoritesMichis();
     }
 }
@@ -158,7 +164,7 @@ async function uploadMichiPhoto(){
     const res = await fetch(API_URL_UPLOAD,{
         method: 'POST',
         headers: {
-            //'Content-Type':'multipart/form-data',
+            
             'X-API-KEY':"live_8Cfw3o6HHx45AFiKyhvdxdckIKBCd77iUJlqFOBh4m3tPcuMyzE4QAzvua2r44yA"
         },
         body: formData,
@@ -166,10 +172,10 @@ async function uploadMichiPhoto(){
     })
     const data = await res.json();
     if (res.status !== 201) {
-        spanError.innerHTML = `Hubo un error al subir michi: ${res.status} ${data.message}`
+        spanError.innerHTML = `Error: ${res.status} ${data.message}`
     }
     else {
-        console.log("Foto de michi subida :)");
+        console.log("Uploaded photo :)");
         console.log({ data });
         console.log(data.url);
         saveFavoriteMichi(data.id) 

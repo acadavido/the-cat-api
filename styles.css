@@ -1,4 +1,11 @@
+:root{
+    --very-light-pink:rgba(253, 225, 225, 0.877) ;
+    --indianred: indianred;
+    --gray: rgb(83, 83, 83);
+    --white: #FFFFFF;
+    --black: #000000;
 
+}
 *{
     padding: 0px;
     margin: 0 px;
@@ -11,7 +18,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgba(253, 225, 225, 0.877);
+    background-color: var(--very-light-pink);
     
     
 }
@@ -22,12 +29,12 @@ header{
 }
 h1{
     font-size: 40px;
-    color: indianred;
+    color: var(--indianred);
     font-weight: 700;
     margin-right: 10px;
 }
 #icon{
-    color: indianred;
+    color:var(--indianred);
     height: 50px;
     width: 50px;
     margin: 0px;
@@ -41,7 +48,7 @@ h1{
 
 }
 h2{
-    color: indianred;
+    color: var(--indianred);
 }
 #favoritesMichis{
     display: flex;
@@ -53,15 +60,19 @@ h2{
     display: flex;
     width: 80vw;
     justify-content: space-around;
+    flex-wrap: wrap;
     
 }
-img{
+#divFav{
+    background-repeat: no-repeat;
+    background-size: cover;
     border-radius: 5px;
     width: 180px;
     height: 180px;
-    margin-bottom: 20px;
+    margin: 20px;
+    position: relative;
 }
-#img1{
+#divrandom{
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 5px;
@@ -71,7 +82,7 @@ img{
     position: relative;
 }
 button{
-    background-color: rgb(255, 255, 255);
+
     color: rgb(83, 83, 83);
     border-radius: 5px;
     padding: 4px;
@@ -90,19 +101,38 @@ button{
     right: 0;
     bottom: 0;
 }
-#btn1:hover{
-    background-color: rgba(253, 225, 225, 0.877);
+
+#btn2{
+    margin: 0;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    background-color: white;
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }
+
 #favorite-icon{
     height: 25px;
     width: 25px;
+}
+#favorite-icon:hover{
+    content: url('https://cdn-icons-png.flaticon.com/512/1076/1076984.png');
+}
+#favorite-icon-pink{
+    height: 25px;
+    width: 25px;
+}
+#favorite-icon-pink:hover{
+    content: url(https://cdn-icons-png.flaticon.com/512/1077/1077035.png);
 }
 button:hover{
     background-color: rgba(224, 224, 224, 0.945);
 }
 #newFile{
-    background-color: rgb(255, 255, 255);
-    color: indianred;
+    background-color: var(--very-light-pink);
+    color: var(--indianred);
     border-radius: 5px;
     padding: 8px;
     margin-bottom: 10px;
@@ -110,3 +140,4 @@ button:hover{
 #newCatTitle{
     text-align: center;
 }
+
